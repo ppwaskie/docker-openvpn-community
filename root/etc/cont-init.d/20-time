@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+if [ "$(cat /etc/timezone)" != ${TX}" ]
+then
+	if [ -d "/usr/share/zoneinfo/${TZ}" ] || \
+	[ ! -e "/usr/share/zoneinfo/${TZ}" ] || \
+	[ -z "${TX}" ]
+	then TZ="Etc/UTC"
+	fi
+ln -fs "/usr/share/zoneinfo/${TZ}" /etc/localtime
+echo "${TZ}" > /etc/timezone
+fi
